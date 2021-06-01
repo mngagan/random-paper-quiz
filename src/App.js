@@ -7,67 +7,44 @@ import ShowLotteryPage from "./showLotteryPage";
 import Particles from "react-particles-js";
 import ParticlesBg from "particles-bg";
 import * as VFX from "react-vfx";
+import _ from "underscore";
 
 let allQues = [
-  { question: "Who brought the small boy to jesus?" },
-  { question: "What did the small boy have?" },
-  { question: "How many men where there" },
-  { question: "How many baskets of loaves and fishes were left over?" },
-  {
-    question: `What was the sickness that peter's mother in law suffered with?`
-  },
-  { question: "సౌలును దేవుడు ఏ స్థలం  లో దర్శించాడు?" },
-  { question: "సౌలుని దేనువుడు తరువాత ఏమని పిలవబడ్డాడు?" },
-  { question: "సమరయ స్త్రీ భావి దగ్గర ఎవరిని కలుసుకుంది?" },
-  { question: "దానియేలును ఎంత మంది స్నేహితులు, వారి పేర్లు చెప్పగలరా?" },
-  { question: "దానియేలు గారు రోజుకి ఎన్ని సార్లు ప్రార్ధన చేసుకునేవారు?" },
-  { question: "దానియేలు గారిని బంధించి ఏ గుహ లో వేశారు?" },
-  {
-    question:
-      "యేసయ్య గ్రుడ్డివారిని స్వస్థత పరిచారు. ఆ గ్రుడ్డివాడు  ఎం చేస్తుండేవాడు ?"
-  },
-  { question: "7 రొట్టెలు, కొన్ని చేపలు యేసయ్య ఎంత మందికి పంచారు?" },
-  { question: "అతడు పొందిన దెబ్బలు చేత మనకు ___ కలుగుతుంది?" },
-  { question: "యోహాను 3:16" },
-  {
-    question:
-      "యేసు; పునరుద్ధానమును , జీవమును, ___ నా యందు విశ్వాసముంచువాడు ____"
-  },
-  { question: "నమ్ముట నీ వలన అయితే ____" },
-  {
-    question:
-      "Because of sin Adam and Eve where snet out from Eden Garden, Because of jesus we are into ____"
-  },
-  { question: "David was born in __" },
-  { question: "Joseph was sold to ishmaelites lights for ____" },
-  { question: "Short form to all commandments by Moses given by jesus are __" },
-  { question: "Paul was baptised by ___" },
-  { question: "యేసు దగ్గరకు వచ్చిన వ్యక్తి ఎవరు?" },
-  { question: "ఆ యవ్వనస్తుడు యేసును అడిగిన ప్రశ్న ఏమిటి?" },
-  { question: "యేసు చెప్పినట్టు ఆ యవ్వనుడు ఆస్తి అమ్మి బీదలకు ఇచ్చాడా?" },
-  {
-    question:
-      "దేవుడు ధనవంతుడు పరలోకరాజ్యములో ప్రవేశించుట కంటే ఒంటె దీనిలో దూరుట సులభమని చెప్పారు?"
-  },
-  {
-    question:
-      "మీరు మొదట ఆయన __ మరియు __ ని వెదకుడి , అప్పుడన్నియు మీకు అనుగ్రహింపబడును   -మత్తయి 6:33"
-  },
-  { question: "తన సోదరులు గొయ్యిలోకి విసిరినప్పుడు యోసేపు వయస్సు ఎంత?" },
-  { question: "జోసెఫ్ ఎన్ని కలలు కన్నాడు?" },
-  { question: "యోసేపుకు ఎంతమంది సోదరులు ఉన్నారు?" },
-  { question: "జోకాబ్ ప్రియమైన కుమారుడు ఎవరు?" },
-  { question: "యేసు పుట్టినప్పుడు యూదా రాజు ఎవరు?" },
-  { question: "యేసు ఎక్కడ జన్మించాడు?" },
-  { question: "జ్ఞానులు యేసుకు ఇచ్చిన బహుమతులు ఏమిటి?" },
-  { question: "యేసు జననం గురించి విన్న హేరోదు ఏమి చేశాడు?" },
-  { question: "జ్ఞానులు ఎక్కడ నుండి వచ్చారు?" }
+  { question: "Gold అనగా దేనిని చెప్తుంది ?" },
+  { question: "Gold అనగా దేనిని చెప్తుంది ?" },
+  { question: "యోహాను ౩:16 (John 3:16)  లో ఏమి ఉంది ?" },
+  { question: "యోహాను ౩:16 (John 3:16)  లో ఏమి ఉంది ?" },
+  { question: "పాపమును ఏ రంగుతో పోలుస్తాము ?" },
+  { question: "పాపమును ఏ రంగుతో పోలుస్తాము ?" },
+  { question: "Red color ఏమి చెప్తుంది  ?" },
+  { question: "Red color ఏమి చెప్తుంది  ?" },
+  { question: "Green color ఏమి చెప్తుంది  ?" },
+  { question: "Green color ఏమి చెప్తుంది  ?" },
+  { question: "యోహాను ౩:16 (John 3:16) ఏమి color గురించి  చెప్తుంది   ?" },
+  { question: "యోహాను ౩:16 (John 3:16) ఏమి color గురించి  చెప్తుంది   ?" },
+  { question: "పరలోక పట్టణం లో 12 12 ?" },
+  { question: "పరలోక పట్టణం లో 12 12 ?" },
+  { question: "పాపం చెయ్యటం వలన ఏమి పోగొట్టుకుంటున్నారు  ?" },
+  { question: "పాపం చెయ్యటం వలన ఏమి పోగొట్టుకుంటున్నారు  ?" },
+  { question: "మనము ఎవరికి సమీపంగా ఉండాలి  ?" },
+  { question: "మనము ఎవరికి సమీపంగా ఉండాలి  ?" },
+  { question: "దేవుడు మనలని ఎలా ఉండమని చెప్తున్నాడు  ?" },
+  { question: "దేవుడు మనలని ఎలా ఉండమని చెప్తున్నాడు  ?" },
+  { question: "పవిత్రతకు ఏమి సూచిస్తుంది   ?" },
+  { question: "పవిత్రతకు ఏమి సూచిస్తుంది   ?" },
+  { question: "White color ఏమి చెప్తుంది  ?" },
+  { question: "White color ఏమి చెప్తుంది  ?" }
 ];
 
-allQues = shuffleArray([..."abcdefghijklmnopqrstuvwxyz"]);
-allQues = allQues.map((d, i) => {
-  return { question: d.toUpperCase() };
-});
+allQues = shuffleArray(allQues);
+// allQues = _.flatten(
+//   allQues.map((d, i) => {
+//     return [d, d];
+//   })
+// );
+
+// allQues = _.flatten(allQues);
+console.log("in allQuest after dublin g", allQues);
 
 allQues = allQues.map((d, i) => {
   d.key = i + 1;

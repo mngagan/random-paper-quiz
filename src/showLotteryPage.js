@@ -6,6 +6,7 @@ import confetti from "canvas-confetti";
 import { FaAngleDoubleRight, FaHome } from "react-icons/fa";
 // let gifts = ['10,000', '5000', '2000', '50,000', '10,000', '75,000']
 // const randomElement = gifts[Math.floor(Math.random() * gifts.length)];
+// const max =
 function ShowLotteryPage(props) {
   const randomElement1 = Math.floor(Math.random() * (99 - 10) + 10) + ",000";
 
@@ -23,7 +24,7 @@ function ShowLotteryPage(props) {
     intervalHandle = setInterval(() => {
       console.log("in interval");
       // execute this code after every 5000 miliseconds
-      setRandomElement(Math.floor(Math.random() * (99 - 60 + 1) + 60) + ",000");
+      setRandomElement(Math.floor(Math.random() * (99 - 10 + 1) + 10) + ",000");
       setColor(getRandomColor());
     }, 100);
 
@@ -32,6 +33,8 @@ function ShowLotteryPage(props) {
       // stopIntervalTask()
       console.log("in set timeout");
       clearInterval(intervalHandle);
+      setRandomElement(Math.floor(Math.random() * (99 - 90 + 1) + 90) + ",000");
+
       setShowVFX(true);
       (function frame() {
         confetti({
