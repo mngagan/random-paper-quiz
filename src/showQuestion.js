@@ -17,7 +17,7 @@ function ShowQuestion(props) {
   return (
     <div className="container">
       <div className="col-md-12">
-        <h2 style={{ fontWeight: "bolder", fontSize: "100px" }}>
+        <h2 style={{ fontWeight: "bolder", fontSize: "60px" }}>
           {props.currentQues.question}
         </h2>
         {/* <button onClick={() => { handleLotteryClick() }}>lottery</button> */}
