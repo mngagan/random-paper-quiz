@@ -77,6 +77,7 @@ function App() {
   const [count, setCount] = useState(allQues.length);
   const [page, setPage] = useState("showNumbers");
   const [currentQues, setCurrentQues] = useState(0);
+  const [targetPoints, setTargetPoints] = useState("more");
 
   const selectQuestion = (key) => {
     setPage("showQuestion");
@@ -102,6 +103,7 @@ function App() {
             currentQues={currentQues}
             setPage={setPage}
             setAllQuestions={setAllQuestions}
+            setTargetPoints={setTargetPoints}
           />
         )}
         {page === "showLottery" && (
@@ -109,6 +111,7 @@ function App() {
             allQuestions={allQuestions}
             currentQues={currentQues}
             setPage={setPage}
+            targetPoints={targetPoints}
           />
         )}
       </div>

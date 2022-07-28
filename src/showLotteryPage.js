@@ -33,7 +33,15 @@ function ShowLotteryPage(props) {
       // stopIntervalTask()
       console.log("in set timeout");
       clearInterval(intervalHandle);
-      setRandomElement(Math.floor(Math.random() * (99 - 90 + 1) + 90) + ",000");
+      if (props.targetPoints === "more") {
+        setRandomElement(
+          Math.floor(Math.random() * (99 - 85 + 1) + 85) + ",000"
+        );
+      } else {
+        setRandomElement(
+          Math.floor(Math.random() * (85 - 70 + 1) + 70) + ",000"
+        );
+      }
 
       setShowVFX(true);
       (function frame() {

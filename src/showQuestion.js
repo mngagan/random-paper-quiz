@@ -1,7 +1,7 @@
 import React from "react";
-import { FaAngleDoubleRight, FaHome } from "react-icons/fa";
+import { FaAngleDoubleRight, FaHome, FaAngleRight } from "react-icons/fa";
 function ShowQuestion(props) {
-  const handleLotteryClick = () => {
+  const handleLotteryClick = (data) => {
     let allQ = props.allQuestions;
     let current = props.currentQues;
     allQ = allQ.map((q) => {
@@ -10,6 +10,7 @@ function ShowQuestion(props) {
       }
       return q;
     });
+    props.setTargetPoints(data.target);
     props.setPage("showLottery");
     props.setAllQuestions(allQ);
   };
@@ -34,10 +35,16 @@ function ShowQuestion(props) {
             props.setPage("showNumbers");
           }}
         />
-        <FaAngleDoubleRight
+        <FaAngleRight
           className="nextIcon ml50"
           onClick={() => {
-            handleLotteryClick();
+            handleLotteryClick({ target: "less" });
+          }}
+        />
+        <FaAngleRight
+          className="nextIcon"
+          onClick={() => {
+            handleLotteryClick({ target: "more" });
           }}
         />
       </div>
